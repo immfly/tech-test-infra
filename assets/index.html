@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clocker</title>
+  <style type="text/css">
+    html {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: #030303;
+      color: #42eef4;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .clock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      font-family: monospace;
+      text-shadow: 0 0 10px #42eef4;
+    }
+
+    #clockTime {
+      font-size: 8em;
+    }
+
+    #clockDate {
+      font-size: 4em;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div id="clockTime"></div>
+    <div id="clockDate"></div>
+  </div>
+  <script>
+    ((window, document, undefined) =>
+    {
+      'use strict';
+
+      const CLOCK_URL = '/clock';
+
+      const clockTime = document.getElementById('clockTime');
+      const clockDate = document.getElementById('clockDate');
+
+      function fetchEpoch(onFetch)
+      {
+        return fetch(CLOCK_URL)
+          .then(response =>
+            response.text().then(onFetch)
+          );
+      }
+
+      function refreshClock()
+      {
+        return fetchEpoch(setClockEpoch);
+      }
+
+      function setClockEpoch(epoch)
+      {
+        const date = new Date(0);
+        date.setUTCSeconds(epoch);
+        clockTime.textContent = formatTime(date);
+        clockDate.textContent = formatDate(date);
+      }
+
+      function formatDate(date)
+      {
+        return [
+          ('0' + date.getDate()).slice(-2),
+          ('0' + (date.getMonth() + 1)).slice(-2),
+          date.getFullYear(),
+        ].join('/');
+      }
+
+      function formatTime(date)
+      {
+        return [
+          ("0" + date.getHours()).slice(-2),
+          ("0" + date.getMinutes()).slice(-2),
+          ("0" + date.getSeconds()).slice(-2),
+        ].join(':');
+      }
+
+      function clockInterval(interval)
+      {
+        return setInterval(refreshClock, interval || 500)
+      }
+
+      clockInterval();
+
+    })(window, document, undefined);
+  </script>
+</body>
+</html>
