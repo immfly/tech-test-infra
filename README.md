@@ -2,6 +2,7 @@
 
 ## 1. Virtual Machine Configuration
 
+Context: We got an xml machine configuration for `libvirt` that runs a qemu virtual machine.
 
 ## Immfly Infra Test
 
