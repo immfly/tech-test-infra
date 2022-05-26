@@ -4,9 +4,9 @@
 
 Context: We got an xml machine configuration for `libvirt` that runs a qemu virtual machine.
 
-https://ubuntu.com/server/docs/virtualization-libvirt
-https://ubuntu.com/server/docs/virtualization-virt-tools#libvirt-virt-manager
-https://libvirt.org/
+https://ubuntu.com/server/docs/virtualization-libvirt  
+https://ubuntu.com/server/docs/virtualization-virt-tools#libvirt-virt-manager  
+https://libvirt.org/  
 
 ## Immfly Infra Test
 
