@@ -74,4 +74,4 @@ If everything works, that is how it should look when accessing the virtual machi
   - How to run the playbooks
 - Feedback: please, don't hesitate to write any thoughts you have about this test.
 
-Send the repository url to `ezequiel.biavaschi@immfly.com`
+Send the repository url to `joan.grau@immfly.com`
